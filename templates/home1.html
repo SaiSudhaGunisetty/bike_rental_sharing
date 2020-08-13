@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='./style.css') }}">
+
+</head>
+<body>
+
+<div class="login">
+    <form action="predict" method="POST">
+        <h2 align="center">Please specify below values</h2>
+        <table align="center">
+            <tr>
+                <td>Season</td>
+                <td><input type="number" min="1" max="4" name="season" placeholder="Season" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td><input type="number" min="0" max="1" name="yr" placeholder="Year" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Qtrs</td>
+                <td><input type="number" min="1" max="4" name="qtrs" placeholder="Quarter" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Month</td>
+                <td><input type="number" min="1" max="12" name="mnth" placeholder="Month" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Holiday</td>
+                <td><input type="number" min="0" max="1" name="holiday" placeholder="Holiday" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Weekday</td>
+                <td><input type="number" min="0" max="1" name="weekday" placeholder="Week Day" required="required"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Working Day</td>
+                <td><input type="number" min="0" max="1" name="workingday" placeholder="Working Day"
+                           required="required"/></td>
+            </tr>
+            <tr>
+                <td>Weathersit</td>
+                <td><input type="number" min="0" max="1" name="weathersit" placeholder="Weathersit"
+                           required="required"/></td>
+            </tr>
+            <tr>
+                <td>Temp (in C)</td>
+                <td><input type="number" min="1" max="10" name="temp" placeholder="Temperature" required="required"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Atemp</td>
+                <td><input type="number" min="1" max="10" name="atemp" placeholder="Atemp" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Wind Speed</td>
+                <td><input type="number" min="1" max="10" name="windspeed" placeholder="Wind Speed"
+                           required="required"/></td>
+            </tr>
+
+        </table>
+        <input style="width:25%;" type="submit" class="btn-primary" value="Predict"/>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='./style.css') }}">
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+  font-size: 17px;
+}
+
+#myVideo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.content {
+  position: fixed;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+}
+
+#myBtn {
+  width: 200px;
+  font-size: 18px;
+  padding: 10px;
+  border: none;
+  background: #000;
+  color: #fff;
+  cursor: pointer;
+}
+
+#myBtn:hover {
+  background: #ddd;
+  color: black;
+}
+
+input {
+	width: 100%;
+	margin-bottom: 10px;
+	background: rgba(0,0,0,0.3);
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 13px;
+	color: #fff;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+	border: 1px solid rgba(0,0,0,0.3);
+	border-radius: 4px;
+	box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+	-webkit-transition: box-shadow .5s ease;
+	-moz-transition: box-shadow .5s ease;
+	-o-transition: box-shadow .5s ease;
+	-ms-transition: box-shadow .5s ease;
+	transition: box-shadow .5s ease;
+}
+input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+
+
+</style>
+</head>
+<body>
+
+<video autoplay muted loop id="myVideo">
+  <source src="https://css-tricks-post-videos.s3.us-east-1.amazonaws.com/blurry-trees.mov">
+  Your browser does not support HTML5 video.
+</video>
+
+<div class="content">
+      <form action="predict" method="POST">
+        <h2 align="center">Please specify below values</h2>
+        <table align="center">
+            <tr>
+                <td>Season</td>
+                <td><input type="number" min="1" max="4" name="season" placeholder="Season" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Year</td>
+                <td><input type="number" min="0" max="1" name="yr" placeholder="Year" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Qtrs</td>
+                <td><input type="number" min="1" max="4" name="qtrs" placeholder="Quarter" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Month</td>
+                <td><input type="number" min="1" max="12" name="mnth" placeholder="Month" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Holiday</td>
+                <td><input type="number" min="0" max="1" name="holiday" placeholder="Holiday" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Weekday</td>
+                <td><input type="number" min="0" max="1" name="weekday" placeholder="Week Day" required="required"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Working Day</td>
+                <td><input type="number" min="0" max="1" name="workingday" placeholder="Working Day"
+                           required="required"/></td>
+            </tr>
+            <tr>
+                <td>Weathersit</td>
+                <td><input type="number" min="0" max="1" name="weathersit" placeholder="Weathersit"
+                           required="required"/></td>
+            </tr>
+            <tr>
+                <td>Temp (in C)</td>
+                <td><input type="number" min="1" max="10" name="temp" placeholder="Temperature" required="required"/>
+                </td>
+            </tr>
+            <tr>
+                <td>Atemp</td>
+                <td><input type="number" min="1" max="10" name="atemp" placeholder="Atemp" required="required"/></td>
+            </tr>
+            <tr>
+                <td>Wind Speed</td>
+                <td><input type="number" min="1" max="10" name="windspeed" placeholder="Wind Speed"
+                           required="required"/></td>
+            </tr>
+        </table>
+          <div align="center">
+        <input  type="submit" class="btn-primary" value="Predict"/>
+          </div>
+    </form>
+
+</div>
+
+<script>
+var video = document.getElementById("myVideo");
+var btn = document.getElementById("myBtn");
+
+function myFunction() {
+  if (video.paused) {
+    video.play();
+    btn.innerHTML = "Pause";
+  } else {
+    video.pause();
+    btn.innerHTML = "Play";
+  }
+}
+</script>
+
+</body>
+</html>
